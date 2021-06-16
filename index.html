@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> Sidebar</title>
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/index7.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" type="text/css" href="fa/css/all.min.css">
+    <style>
+        .fa-chevron-down {
+            transform: rotate(0deg);
+            transition: transform .3s linear;
+            float: right;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        .fa-chevron-down.open {
+            transform: rotate(180deg);
+            transition: transform .3s linear;
+        }
+        
+        accordion-toggle {
+            cursor: pointer;
+         }
+         .accordion-content {
+             display: none;
+         }
+        /* just to demo the .active class */
+        .activa {
+             background: orange;
+         }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <h3>Slimcent <span>Sidebar</span></h3>
+        </div>
+        <div class="right">
+            <a href="#" class="logout">Logout</a>
+        </div>
+    </header>
+
+    <div id="wrapper">
+        <input type="checkbox" id="menu" name="">
+        <input type="checkbox" id="side" name="">
+        <label class="menu-btn" for="menu" onclick="stopDrop"><span class="navicon"></span></label>
+        <label class="side-btn" for="side"><span class="sideicon"></span></label>
+        <nav id="sidebar" class="sidebar">
+            <a href="#"><i class="fa fa-desktop dd"></i>Dashboard</a>
+            <a href="#"><i class="fa fa-cogs dd"></i>Components</a>
+            <label id="cont" class="dropdown-btn"><i class="fa fa-cogs"></i>Services
+                <i id="icon" class="fa fa-chevron-down"></i>
+            </label>
+            <div class="dropdown-container">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+            <a href="#"><i class="fa fa-table"></i>Overview</a>
+             <label id="cont1" class="dropdown-btn"><i class="fa fa-cogs"></i>Works
+                <i id="icon1" class="fa fa-chevron-down"></i>
+            </label>
+            <div class="dropdown-container">
+                <a href="#">Work 1</a>
+                <a href="#">Work 2</a>
+                <a href="#">Work 3</a>
+            </div>
+            <a href="#"><i class="fa fa-sliders-h"></i>Services</a>
+            <a href="#"><i class="fa fa-info-circle"></i>Contact</a>
+        </nav>
+
+        <!-- Page Content  -->
+        <div class="content">
+            <h2>Collapsible Sidebar</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fermentum interdum orci in finibus. Cras eu ante condimentum, efficitur libero vitae, rhoncus eros. Curabitur a auctor sem, ac porta metus. Ut volutpat eu neque nec mattis. Nullam viverra
+                sem vitae diam sollicitudin pulvinar. Ut elementum urna non mollis eleifend. Cras maximus rhoncus lacus, vitae pellentesque nunc sodales a. Donec blandit nec odio sit amet porttitor.
+            </p>
+            <p>
+                Vestibulum a est vitae risus porta sollicitudin vitae a neque. Curabitur facilisis risus quis libero viverra aliquet. Vestibulum vehicula elit eget velit vulputate, id bibendum mauris hendrerit. Donec eleifend lorem eu pulvinar feugiat. Cras at feugiat
+                tellus. Ut non orci ac turpis euismod iaculis non at sem. Vestibulum sit amet nulla est. Etiam sodales condimentum tellus, sed auctor diam sagittis et. Suspendisse id orci at lectus scelerisque mattis. Vivamus mollis euismod massa, vitae
+                volutpat nisi commodo et. Donec a tellus nulla. Nunc quis ligula cursus, blandit nulla vitae, ullamcorper neque. Aliquam dictum tempus sem nec dignissim.
+            </p>
+
+            <br>
+
+            <div id="accordion">
+               <h5 class="accordion-toggle">Accordion 1</h5>
+               <div class="accordion-content activa">
+                  <a href="#">Work 1</a>
+                  <a href="#">Work 2</a>
+                  <a href="#">Work 3</a>
+               </div>
+                
+              <h5 style="cursor: pointer" class="accordion-toggle">Accordion 2</h5>
+              <div class="accordion-content">
+                 <p>Lorem ipsum dolor sit amet mauris eu turpis.</p>
+              </div>
+              <h5 class="accordion-toggle">Accordion 3</h5>
+              <div class="accordion-content">
+                 <p>Vivamus facilisisnibh scelerisque laoreet.</p>
+              </div>
+                <h5 class="accordion-toggle">Accordion 1</h5>
+               <div class="accordion-content activa">
+                   <a href="#">service 1</a>
+                   <a href="#">Service 2</a>
+                   <a href="#">Service 3</a>
+               </div>
+            </div>     
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>     
+    <script>
+        $(document).ready(function($) {
+          $('#sidebar').find('.dropdown-btn').click(function() {
+            //Expand or collapse this panel
+              $(this).next().slideToggle('fast');
+              //Hide the other panels
+              $(".dropdown-container").not($(this).next()).slideUp('fast');
+           });
+         });
+        
+    </script>
+
+    <script>
+        (function(document) {
+            var div = document.getElementById('cont');
+            var icon = document.getElementById('icon');
+            var open = false;
+
+            div.addEventListener('click', function() {
+                if (open) {
+                    icon.className = 'fa fa-chevron-down';
+                } else {
+                    icon.className = 'fa fa-chevron-down open';
+
+                }
+
+                open = !open;
+            });
+        })(document);
+        
+        (function(document) {
+            var div = document.getElementById('cont1');
+            var icon = document.getElementById('icon1');
+            var open = false;
+
+            div.addEventListener('click', function() {
+                if (open) {
+                    icon.className = 'fa fa-chevron-down';
+                } else {
+                    icon.className = 'fa fa-chevron-down open';
+
+                }
+
+                open = !open;
+            });
+        })(document);
+    </script>
+
+</body>
+
+</html>
